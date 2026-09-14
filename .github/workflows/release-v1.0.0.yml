@@ -1,0 +1,37 @@
+name: Publish v1.0.0
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/release-v1.0.0.yml
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Verify release artifacts
+        shell: bash
+        run: |
+          echo "EDE2BB88F5A825B6278BABE592E0CF36F2A108B7100249C15DCD7D67928C57FF  dist/PlanPeakMOTD-Velocity-1.0.0.jar" | sha256sum --check --strict
+          echo "8B06179DA9C6FD15F9592C567984BC491E8493D007269FAE29D7EEEB4B068276  dist/PlanPeakBridge-Folia-1.0.0.jar" | sha256sum --check --strict
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          gh release create v1.0.0 \
+            dist/PlanPeakMOTD-Velocity-1.0.0.jar \
+            dist/PlanPeakBridge-Folia-1.0.0.jar \
+            --target "$GITHUB_SHA" \
+            --title "PlanPeakMOTD v1.0.0" \
+            --notes "首次正式发布。包含 Velocity 3.5.0 主插件和 Folia 26.1.2 子服桥接插件；支持 MiniMOTD 人数悬浮、Plan 今日峰值、PAPI 服务器型变量、配置热重载和本机安全通信。详细安装方法请查看仓库 README。"
+
