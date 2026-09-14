@@ -242,4 +242,3 @@ plan-peak-motd/
 ## 开源协议
 
 本项目由 **xhGG** 开发，使用 [MIT License](LICENSE) 开源。
-

@@ -1,0 +1,19 @@
+.gradle/
+.idea/
+**/build/
+out/
+*.iml
+
+# Runtime files may contain the generated shared token or server data.
+**/plugins/planpeakmotd/config.properties
+**/plugins/planpeakmotd/peak-cache.properties
+**/plugins/PlanPeakBridge/config.properties
+**/plugins/PlanPeakBridge/peak-cache.properties
+
+# Never publish local credentials or private keys.
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx

@@ -1,0 +1,18 @@
+name: PlanPeakBridge
+version: '${version}'
+main: cn.xhgg.planpeakmotd.folia.PlanPeakBridgePlugin
+api-version: '1.21'
+folia-supported: true
+depend: [Plan]
+softdepend: [PlaceholderAPI]
+authors: [xhGG]
+description: Reports today's Plan player peak to PlanPeakMOTD on Velocity.
+commands:
+  planpeakbridge:
+    description: 查看或重载 PlanPeakBridge
+    usage: /planpeakbridge <status|reload|send>
+    permission: planpeakbridge.admin
+permissions:
+  planpeakbridge.admin:
+    description: 管理 PlanPeakBridge
+    default: op
